@@ -11,6 +11,8 @@ import { StackNavigator } from './StackNavigator';
 import { colores } from '../theme/appTheme';
 import { Platform, Text } from 'react-native';
 import { TopTabNavigator } from './TopTabNavigator';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 
 export const Tabs = () => {
   return Platform.OS === 'ios'
@@ -26,7 +28,7 @@ const TabsAndroid = () => {
     <BottomTabAndroid.Navigator
       sceneAnimationEnabled={ true }
       barStyle={{
-        backgroundColor: colores.primary
+        backgroundColor: 'white'
       }}
       screenOptions={({route}) => ({
         tabBarActiveTintColor: colores.primary,
@@ -42,18 +44,19 @@ const TabsAndroid = () => {
           let iconName: string = '';
           switch(route.name) {
             case 'Tab1Screen' :
-              iconName = 'T1'
+              iconName = 'home-outline'
               break;
   
             case 'Tab2Screen' :
-              iconName = 'T2'
+              iconName = 'basketball-outline'
               break;
   
             case 'StackNavigator' :
-              iconName = 'ST'
+              iconName = 'bookmarks-outline'
               break;
           }
-          return <Text style={{color}}>{ iconName }</Text>
+          return <Icon name={ iconName } size={25} color={ color } />;
+
       }
       })}
     >

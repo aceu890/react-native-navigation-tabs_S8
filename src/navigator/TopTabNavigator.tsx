@@ -7,6 +7,7 @@ import { ContactsScreen } from '../screens/ContactsScreen';
 import {LogBox, Text} from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colores } from '../theme/appTheme';
+import Icon from 'react-native-vector-icons/Ionicons';
 LogBox.ignoreLogs(['sending'])
 
 const Tab = createMaterialTopTabNavigator();
@@ -43,18 +44,18 @@ const { top: paddingTop } = useSafeAreaInsets()
           let iconName: string = '';
           switch (route.name) {
               case 'ChatScreen':
-              iconName = 'I'
+              iconName = 'chatbox-ellipses-outline'
               break;
  
               case 'ContactsScreen':
-              iconName = 'I'
+              iconName = 'people-outline'
               break;
  
               case 'AlbumsScreen':
-              iconName = 'I'
+              iconName = 'albums-outline'
               break;
           }
-          return <Text style={{color}}>{iconName}</Text>
+          return <Icon name={ iconName} size={25} color={color} />;
         }
       })}
     >

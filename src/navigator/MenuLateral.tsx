@@ -6,6 +6,7 @@ import { Image, useWindowDimensions, View, TouchableOpacity, Text } from 'react-
 import { styles } from '../theme/appTheme';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Tabs } from './Tabs';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Drawer = createDrawerNavigator();
 
@@ -15,14 +16,14 @@ export const MenuLateral = () => {
 
   return (
     <Drawer.Navigator
-    screenOptions={{
-       drawerType: width >= 768 ? 'permanent' : 'front', // Menú modo horizontal
-       headerShown: false  // Oculta la hamburguesa
-    }}
-    drawerContent={ (props) => <MenuInterno { ...props } /> }
+      screenOptions={{
+        drawerType: width >= 768 ? 'permanent' : 'front', // Menú modo horizontal
+        headerShown: false  // Oculta la hamburguesa
+      }}
+      drawerContent={(props) => <MenuInterno {...props} />}
     >
-      <Drawer.Screen name="Tabs" component={ Tabs } />
-      <Drawer.Screen name="SettingScreen"  component={ SettingScreen } />
+      <Drawer.Screen name="Tabs" component={Tabs} />
+      <Drawer.Screen name="SettingScreen" component={SettingScreen} />
     </Drawer.Navigator>
   );
 }
@@ -31,39 +32,49 @@ export const MenuLateral = () => {
     screenOptions={{drawerPosition:'right'}}
 > */}
 
-const MenuInterno = ( { navigation }: DrawerContentComponentProps<DrawerContentOptions>) => {
+const MenuInterno = ({ navigation }: DrawerContentComponentProps<DrawerContentOptions>) => {
 
   return (
     <DrawerContentScrollView>
-        <View style={styles.avatarContainer}>
+      <View style={styles.avatarContainer}>
 
-          {/* Parte del Avatar */}
-          <Image 
-            source={{
-              uri: 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'
-            }}
-            style={ styles.avatar}
-          />
-        </View>
+        {/* Parte del Avatar */}
+        <Image
+          source={{
+            uri: 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'
+          }}
+          style={styles.avatar}
+        />
+      </View>
 
-        {/* Opciones de menú */}
-        <View style={ styles.menuContainer}>
+      {/* Opciones de menú */}
+      <View style={styles.menuContainer}>
 
-          <TouchableOpacity 
-              style={ styles.menuBoton }
-              onPress={() => navigation.navigate('Tabs')}
-              >
-            <Text style={ styles.menuTexto}>Navegación Stack</Text>
-          </TouchableOpacity> 
+        <TouchableOpacity
+          style={{
+            ...styles.menuBoton,
+            flexDirection: 'row'
 
-          <TouchableOpacity 
-             style={ styles.menuBoton }
-             onPress={() => navigation.navigate('SettingScreen')}
-          >
-            <Text style={ styles.menuTexto}>Ajustes</Text>
-          </TouchableOpacity> 
+          }}
+          onPress={() => navigation.navigate('Tabs')}
+        >
+          <Icon name="compass-outline" size={25} color="grey" />
+          <Text style={styles.menuTexto}>Navegación Stack</Text>
+        </TouchableOpacity>
 
-        </View>
+        <TouchableOpacity
+          style={{
+            ...styles.menuBoton,
+            flexDirection: 'row'
+
+          }}
+          onPress={() => navigation.navigate('SettingScreen')}
+        >
+          <Icon name="cog-outline" size={25} color="grey" />
+          <Text style={styles.menuTexto}>Ajustes</Text>
+        </TouchableOpacity>
+
+      </View>
 
     </DrawerContentScrollView>
   );

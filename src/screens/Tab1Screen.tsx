@@ -16,6 +16,12 @@ useEffect(() => {
         <Text style={styles.title}>Iconos</Text>
         <Text>
           <Icon name="airplane-outline" size={60} color="black" />;
+          <Icon name="attach-outline" size={60} color="black" />;
+          <Icon name="bonfire-outline" size={60} color="black" />;
+          <Icon name="calculator-outline" size={60} color="black" />;
+          <Icon name="chatbubble-outline" size={60} color="black" />;
+          <Icon name="images-outline" size={60} color="black" />;
+          <Icon name="leaf-outline" size={60} color="black" />;
         </Text>
         
 
